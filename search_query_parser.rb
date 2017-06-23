@@ -21,8 +21,12 @@ describe SearchQueryParser do
       parser = described_class.new("tag:'monkey' tag:'monkey business' monkey")
       expect(parser.text).to eql('monkey')
     end
-    it "finds the text with no tags" do
+    it "finds the text with multiple words" do
       parser = described_class.new('monkey banana fun-time')
+      expect(parser.text).to eql('monkey banana fun-time')
+    end
+    it "finds the text with multiple words" do
+      parser = described_class.new("tag:'monkey business' monkey banana fun-time")
       expect(parser.text).to eql('monkey banana fun-time')
     end
   end
