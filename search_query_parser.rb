@@ -40,5 +40,9 @@ describe SearchQueryParser do
       parser = described_class.new("tag:'monkey' tag:'monkey business'")
       expect(parser.tags).to eql(['monkey', 'monkey business'])
     end
+    it "finds no tags" do
+      parser = described_class.new('monkey banana fun-time')
+      expect(parser.tags).to eql([])
+    end
   end
 end
